@@ -45,12 +45,18 @@ function getPreview() {
     let container = document.getElementById("FotogramPreview");
     let html = "";
 
-    for (let i = 0; i < arrPicture.length; i++) {
-        html += `<img src="./ski/${arrPicture[i][0]}" class="imgPreview" onclick="loadDialog('${i}')" alt="${arrPicture[i][1]}">`;
-    }
+for (let i = 0; i < arrPicture.length; i++) {
+    html += `
+        <button onclick="loadDialog('${i}')" class="imgPreview" aria-label="${arrPicture[i][1]}">
+            <img src="./ski/${arrPicture[i][0]}" alt="">
+        </button>
+    `;
+}
 
     container.innerHTML = html;
 }
+
+
 
 //Funktion um das Bild in die Dialogbox zu laden
 function loadPicture() {
