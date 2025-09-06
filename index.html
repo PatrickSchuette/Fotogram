@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fotogram</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="./img/favicon.png">
+
+</head>
+
+<body>
+
+  <header id="header-container"></header> <!-- Eingebunden über main.js -->
+
+  <main>
+
+    <section class="container">
+      <h1> Ski Wintertraum</h1>
+
+      <div id="FotogramPreview"></div>
+    </section>
+
+  </main>
+
+
+  <dialog id="showPicture">
+    <header>
+      <h1>Wintertraum</h1>
+    </header>
+    <main>
+      <div id="FotogramImg"></div>
+    </main>
+
+    <footer>
+      <button id="dialogPrevious" onclick="previousPicture()">previous</button>
+      <div id="imgID"></div>
+      <button id="dialogNext" onclick="nextPicture()">next</button>
+      <button onclick="closeDialog()">Schließen</button>
+    </footer>
+
+
+
+  </dialog>
+
+  <footer id="footer-container"></footer> <!-- Eingebunden über main.js -->
+
+  <script src="main.js" defer> </script>
+</body>
+
+</html>

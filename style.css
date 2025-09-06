@@ -1,0 +1,123 @@
+/* Grundlayout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+:root {
+  --AbstandRand: 32px;
+  --AbstandContainer: 25px;
+  --HeightHeader: 64px;
+  --HeightFooter: 64px;
+}
+
+
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #2d5588;
+  font-family: sans-serif;
+  color: white;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  background-color: rgb(64, 59, 59);
+  height: var(--HeightFooter);
+  padding: 0 var(--AbstandRand);
+}
+
+/* Header */
+header {
+  background-color: #3a3a3a;
+  height: var(--HeightHeader);
+
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  height: calc(var(--HeightHeader) - 8px);
+}
+
+/* ############ Vorschau */
+.imgPreview {
+  height: 256px;
+  aspect-ratio: 1 / 1;
+  padding: 16px 16px;
+}
+
+
+
+/* Verstecken des Buttons auf Desktop */
+.hide-desktop {
+  display: none;
+}
+
+.hide-mobile {
+  display: block;
+}
+
+#FotogramPreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+#showPicture {
+
+  height: 500px;
+  width: 900px;
+}
+
+#FotogramImg img {
+
+  height: 320px;
+  aspect-ratio: 1 / 1;
+  padding: 16px 16px;
+
+    width: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ##################### Mobile Ansicht */
+@media (max-width: 767px) {
+  :root {
+    --AbstandRand: 16px;
+    --AbstandContainer: 8px;
+    --HeightHeader: 32px;
+    --HeightFooter: 32px;
+  }
+
+
+
+  .hide-desktop {
+    display: block;
+  }
+
+  .hide-mobile {
+    display: block;
+  }
+
+
+}

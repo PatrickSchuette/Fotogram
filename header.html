@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Logo</div>
+        <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
+        <nav id="resp_menu" class="resp_menu_box resp_menu_closed" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="about.html">Über uns</a></li>
+                <li><a href="services.html">Leistungen</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <script>
+        function toggleRespMenu() {
+            document.getElementById("resp_menu").classList.toggle("resp_menu_closed");
+        }
+
+        function highlightActiveLinks(container) {
+            const currentPage = location.pathname.split("/").pop();
+            const links = container.querySelectorAll("a");
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const menu = document.getElementById("resp_menu");
+            highlightActiveLinks(menu);
+        });
+    </script>
+</body>
+
+</html>
