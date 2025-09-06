@@ -41,14 +41,14 @@ footer {
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  background-color: rgb(64, 59, 59);
+  background-color:#3a3a3a73;
   height: var(--HeightFooter);
   padding: 0 var(--AbstandRand);
 }
 
 /* Header */
 header {
-  background-color: #3a3a3a;
+  background-color: #3a3a3a73;
   height: var(--HeightHeader);
 
     display: flex;
@@ -224,7 +224,7 @@ header {
 
 .resp_menu_box a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 16px;
 }
 

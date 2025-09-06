@@ -18,8 +18,8 @@ const overlaygRef = document.getElementById("overlay");
 
 function createResponsiveMenuHTML() {
     return `
-        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
-        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Logo"> </a> </div>
+        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"> </a> </div>
+        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Fotogram_Logo"> </a> </div>
         <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
         <nav id="resp_menu" class="main-nav resp_menu_box resp_menu_closed" aria-hidden="true">
             <ul>
@@ -33,8 +33,8 @@ function createResponsiveMenuHTML() {
 
 function createFooterHTML() {
     return `
-        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
-        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Logo"> </a> </div>
+        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"> </a> </div>
+        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Fotogram_Logo"> </a> </div>
         <div id="FooterLink" class="">
             <a href="http://facebook.com"><img src="./img/social-icons/Facebook_logo.svg" alt="Facebook"></a>
             <a href="http://instagram.com"><img src="./img/social-icons/Instagram_logo.svg" alt="Instagramm"></a>
