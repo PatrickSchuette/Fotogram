@@ -14,18 +14,27 @@ let arrPicture = [
 let selectedImg;
 
 const dialogRef = document.getElementById("showPicture");
+const overlaygRef = document.getElementById("overlay");
 
 function createResponsiveMenuHTML() {
     return `
-        <div class="logo"><img src="./img/Fotogram_Logo.svg" alt="Logo"></div>
+        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
+        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Logo"> </a> </div>
         <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
+        <nav id="resp_menu" class="main-nav resp_menu_box resp_menu_closed" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
     `;
 }
 
 function createFooterHTML() {
     return `
         <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
-        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
+        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Logo"> </a> </div>
         <div id="FooterLink" class="">
             <a href="http://facebook.com"><img src="./img/social-icons/Facebook_logo.svg" alt="Facebook"></a>
             <a href="http://instagram.com"><img src="./img/social-icons/Instagram_logo.svg" alt="Instagramm"></a>
@@ -56,7 +65,10 @@ for (let i = 0; i < arrPicture.length; i++) {
     container.innerHTML = html;
 }
 
-
+// Menü im Handmodys
+function toggleRespMenu() {
+    document.getElementById("resp_menu").classList.toggle("resp_menu_closed");
+}
 
 //Funktion um das Bild in die Dialogbox zu laden
 function loadPicture() {
@@ -89,6 +101,8 @@ function previousPicture() {
 
 function loadDialog(i) {
     dialogRef.showModal();
+    dialogRef.classList.add("showPictureFlex");
+    overlay.classList.remove("d_none");
     selectedImg = i;
     loadPicture();
 
@@ -96,9 +110,11 @@ function loadDialog(i) {
 
 function closeDialog() {
     dialogRef.close();
+    dialogRef.classList.remove("showPictureFlex");
+    overlay.classList.add("d_none");
 }
 
 
 // Initialisierung
-loadMenus();
-getPreview();
+loadMenus();  //header, Menü und Footer laden
+getPreview();  //die vorschau zeigen

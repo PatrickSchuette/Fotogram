@@ -14,8 +14,10 @@
 
   <header id="header-container"></header> <!-- Eingebunden über main.js -->
 
-  <main>
+  <div id="overlay" class="overlay d_none"></div>
 
+  <main>
+    
     <section class="container">
       <h1> Ski Wintertraum</h1>
 
@@ -28,6 +30,7 @@
   <dialog id="showPicture">
     <header>
       <h1>Wintertraum</h1>
+      <button onclick="closeDialog()">Schließen</button>
     </header>
     <main>
       <div id="FotogramImg"></div>
@@ -37,7 +40,7 @@
       <button id="dialogPrevious" onclick="previousPicture()">previous</button>
       <div id="imgID"></div>
       <button id="dialogNext" onclick="nextPicture()">next</button>
-      <button onclick="closeDialog()">Schließen</button>
+      
     </footer>
 
 
