@@ -56,10 +56,16 @@ header {
   height: calc(var(--HeightHeader) - 8px);
 }
 
+#FooterLink img{
+  height: 48px;
+  aspect-ratio: 1 / 1;
+}
+
 /* ############ Vorschau */
 .imgPreview {
   height: 256px;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
   padding: 16px 16px;
 }
 

@@ -1,15 +1,14 @@
 let arrPicture = [
 
-    "blackcomb-52957_1280.jpg",
-    "heliskiing-heli-skiing-1974015_1280.jpg",
-    "mountain-6908988_1280.jpg",
-    "nature-1283694_1280.jpg",
-    "ski-2098120_1280.jpg",
-    "skiing-4835024_1280.jpg",
-    "skiing-5878729_1280.jpg",
-    "skiing-6060431_1280.jpg",
-    "snow-6881356_1280.jpg"
-
+  ["blackcomb-52957_1280.jpg", "Blackcomb Mountain im Winter"],
+  ["heliskiing-heli-skiing-1974015_1280.jpg", "Heliskiing Abenteuer"],
+  ["mountain-6908988_1280.jpg", "Majestätischer Berg bei Sonnenuntergang"],
+  ["nature-1283694_1280.jpg", "Unberührte Natur im Schnee"],
+  ["ski-2098120_1280.jpg", "Skifahrer auf der Piste"],
+  ["skiing-4835024_1280.jpg", "Dynamische Abfahrt im Tiefschnee"],
+  ["skiing-5878729_1280.jpg", "Skifahrer in Aktion"],
+  ["skiing-6060431_1280.jpg", "Sprung über Schneehügel"],
+  ["snow-6881356_1280.jpg", "Verschneite Landschaft mit Bäumen"]
 ];
 
 let selectedImg;
@@ -28,8 +27,8 @@ function createFooterHTML() {
         <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
         <div class="logo hide-desktop"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Logo"> </a> </div>
         <div id="FooterLink" class="">
-            <a href="http://facebook.com"><img src="./img/social-icons/icons8-facebook-48.png" alt="Facebook"></a>
-            <a href="http://instagram.com"><img src="./img/social-icons/icons8-instagram-48.png" alt="Instagramm"></a>
+            <a href="http://facebook.com"><img src="./img/social-icons/Facebook_logo.svg" alt="Facebook"></a>
+            <a href="http://instagram.com"><img src="./img/social-icons/Instagram_logo.svg" alt="Instagramm"></a>
         </div>
     `;
 }
@@ -47,7 +46,7 @@ function getPreview() {
     let html = "";
 
     for (let i = 0; i < arrPicture.length; i++) {
-        html += `<img src="./ski/${arrPicture[i]}" class="imgPreview" onclick="loadDialog('${i}')">`;
+        html += `<img src="./ski/${arrPicture[i][0]}" class="imgPreview" onclick="loadDialog('${i}')" alt="${arrPicture[i][1]}">`;
     }
 
     container.innerHTML = html;
@@ -56,7 +55,7 @@ function getPreview() {
 //Funktion um das Bild in die Dialogbox zu laden
 function loadPicture() {
     let container = document.getElementById("FotogramImg");
-    container.innerHTML = `<img src="./ski/${arrPicture[selectedImg]}">`;
+    container.innerHTML = `<img src="./ski/${arrPicture[selectedImg][0]}" alt="${arrPicture[selectedImg][1]}">`;
     document.getElementById("imgID").innerHTML = `${selectedImg + 1} / ${arrPicture.length}`;
 }
 
