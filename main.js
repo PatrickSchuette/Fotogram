@@ -13,19 +13,23 @@ let arrPicture = [
 
 let selectedImg;
 
-const dialogRef = document.getElementById("showPicture");
+const dialogPictureRef = document.getElementById("dialogPicture");
 const overlaygRef = document.getElementById("overlay");
+const dialogContactRef = document.getElementById("dialogContact");
+const dialogImpressumRef = document.getElementById("dialogImpressum");
+
+
+// ################## Header und Footer für die Hauptseite laden
 
 function createResponsiveMenuHTML() {
     return `
-        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"> </a> </div>
-        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Fotogram_Logo"> </a> </div>
+        <div class="logo hide-mobile"><img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"></div>
+        <div class="logo hide-desktop"><img src="./img/favicon.svg" alt ="Fotogram_Logo"></div>
         <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
         <nav id="resp_menu" class="main-nav resp_menu_box resp_menu_closed" aria-hidden="true">
             <ul>
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
+                <li><a onclick="loadDialogContact()">Kontakt</a></li>
+                <li><a onclick="loadDialogImpressum()">Impressum</a></li>
             </ul>
         </nav>
     `;
@@ -33,8 +37,8 @@ function createResponsiveMenuHTML() {
 
 function createFooterHTML() {
     return `
-        <div class="logo hide-mobile"><a href="index.html"> <img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"> </a> </div>
-        <div class="logo hide-desktop"><a href="index.html"> <img src="./img/favicon.svg" alt ="Fotogram_Logo"> </a> </div>
+        <div class="logo hide-mobile"><img src="./img/Fotogram_Logo.svg" alt ="Fotogram_Logo"> </div>
+        <div class="logo hide-desktop"><img src="./img/favicon.svg" alt ="Fotogram_Logo"> </div>
         <div id="FooterLink" class="">
             <a href="http://facebook.com"><img src="./img/social-icons/Facebook_logo.svg" alt="Facebook"></a>
             <a href="http://instagram.com"><img src="./img/social-icons/Instagram_logo.svg" alt="Instagramm"></a>
@@ -42,21 +46,21 @@ function createFooterHTML() {
     `;
 }
 
-//Header und Footer für die Hauptseite laden
+
 function loadMenus() {
     // Menü direkt nach dem Header einfügen
     document.getElementById("header-container").insertAdjacentHTML("beforeend", createResponsiveMenuHTML());
     document.getElementById("footer-container").insertAdjacentHTML("beforeend", createFooterHTML());
 }
 
-// Vorschaubilder auf der index.html erzeugen
+// ##################  Vorschaubilder auf der index.html erzeugen
 function getPreview() {
     let container = document.getElementById("FotogramPreview");
     let html = "";
 
 for (let i = 0; i < arrPicture.length; i++) {
     html += `
-        <button onclick="loadDialog('${i}')" class="imgPreview" aria-label="${arrPicture[i][1]}">
+        <button onclick="loadDialogImg('${i}')" class="imgPreview" aria-label="${arrPicture[i][1]}">
             <img src="./ski/${arrPicture[i][0]}" alt="">
         </button>
     `;
@@ -99,21 +103,192 @@ function previousPicture() {
 
 
 
-function loadDialog(i) {
-    dialogRef.showModal();
-    dialogRef.classList.add("showPictureFlex");
+function loadDialogImg(i) {
+    dialogPictureRef.showModal();
+    dialogPictureRef.classList.add("showPictureFlex");
     overlay.classList.remove("d_none");
-    selectedImg = i;
+    selectedImg = parseInt(i);
     loadPicture();
 
 }
 
-function closeDialog() {
-    dialogRef.close();
-    dialogRef.classList.remove("showPictureFlex");
+function closeDialogImg() {
+    dialogPictureRef.close();
+    dialogPictureRef.classList.remove("showPictureFlex");
     overlay.classList.add("d_none");
 }
 
+
+//#################  Contact
+
+function createContactHTML() {
+    return `
+        <div class="contactFormContainer">
+            <h2>nimm mit uns über das folgende Formular Kontakt auf</h2>
+            <form id="ContactForm" onsubmit="sendMail(event)">
+                <label for="formName" >Dein Name:</label>
+                <input type="text" id="formName" name="name"minlength="2" maxlength="70" placeholder="Max Mustermann" required>
+                <label for="formMail">Deine E-Mail:</label>
+                <input type="email" id="formMail" name="email" minlength="7" maxlength="70" placeholder="max.mustermann@beispiel.com"
+                    required>
+                <label for="formArea">Deine Nachricht:</label>
+                <textarea id="formArea" name="message" maxlength="500" placeholder="Hey Leute..." required></textarea>
+                <div>
+                    <button id="submitBtn" type="submit">Abschicken</button>
+                </div>
+
+            </form>
+        </div>
+    `;
+}
+
+function loadDialogContact() {
+    dialogContactRef.showModal();
+    dialogContactRef.classList.add("showPictureFlex");
+
+    let container = document.getElementById("Contact");
+    container.innerHTML = createContactHTML();
+
+}
+
+function closeDialogContact() {
+    dialogContactRef.close();
+    dialogContactRef.classList.remove("showPictureFlex");
+    overlay.classList.add("d_none");
+}
+
+
+//#################  Impressum
+
+function createImpressumHTML() {
+    return `
+        <section id="ImpHaftungsausschuss">
+  <h3>Haftungsausschluss: </h3>
+  <h4>Haftung für Inhalte</h4>
+  Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
+  Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für
+  eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als
+  Diensteanbieter
+  jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
+  forschen,
+  die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+  Informationen nach
+  den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+  Kenntnis einer
+  konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte
+  umgehend
+  entfernen.
+  <h4>Haftung für Links</h4>
+  Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.
+  Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist
+  stets
+  der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt
+  der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
+  erkennbar.
+  Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer
+  Rechtsverletzung
+  nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+</section>
+
+<section id="ImpUrheberrecht">
+  <h3>Urheberrecht</h3>
+  Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+  Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
+  bedürfen
+  der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den
+  privaten,
+  nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
+  werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
+  Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.
+  Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+</section>
+
+<section id="ImpDatenschutz">
+  <h3>Datenschutz</h3>
+  Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich.
+  Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden,
+  erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
+  Zustimmung nicht an Dritte weitergegeben. <br>
+  Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken
+  aufweisen kann.
+  Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
+  Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung
+  von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen.
+  Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung
+  von Werbeinformationen, etwa durch Spam-Mails, vor.
+</section>
+
+<section id="ImpGoogle">
+  <h3>Google Analytics</h3>
+  Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (''Google'').
+  Google Analytics verwendet sog. ''Cookies'', Textdateien, die auf Ihrem Computer gespeichert werden und die eine
+  Analyse der Benutzung der Website durch Sie ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre
+  Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA
+  übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten,
+  um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der
+  Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen
+  gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag
+  von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen.
+  Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer
+  Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht
+  sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären
+  Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und
+  zu dem zuvor benannten Zweck einverstanden.
+
+  <h3>Google AdSense</h3>
+  Diese Website benutzt Google Adsense, einen Webanzeigendienst der Google Inc., USA (''Google''). Google Adsense
+  verwendet sog.
+  ''Cookies'' (Textdateien), die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website
+  durch Sie ermöglicht. Google Adsense verwendet auch sog. ''Web Beacons'' (kleine unsichtbare Grafiken) zur Sammlung
+  von Informationen. Durch die Verwendung des Web Beacons können einfache Aktionen wie der Besucherverkehr auf der
+  Webseite aufgezeichnet und gesammelt werden. Die durch den Cookie und/oder Web Beacon erzeugten Informationen über
+  Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) werden an einen Server von Google in den USA
+  übertragen
+  und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website im Hinblick
+  auf die Anzeigen auszuwerten, um Reports über die Websiteaktivitäten und Anzeigen für die Websitebetreiber
+  zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu
+  erbringen.
+  Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder
+  soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen
+  Daten
+  der Google in Verbindung bringen. Das Speichern von Cookies auf Ihrer Festplatte und die Anzeige von Web Beacons
+  können Sie verhindern, indem Sie in Ihren Browser-Einstellungen ''keine Cookies akzeptieren'' wählen (Im MS
+  Internet-Explorer unter
+  ''Extras > Internetoptionen > Datenschutz > Einstellung''; im Firefox unter ''Extras > Einstellungen > Datenschutz >
+  Cookies'');
+</section>
+
+<section id="ImpSonstiges">
+  wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website
+  voll
+  umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie
+  erhobenen
+  Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.</p><br>
+  Impressum von <a href="https://websitewissen.com" rel="dofollow">WebsiteWissen.com</a>, dem Ratgeber für
+  <a href="https://websitewissen.com/wordpress-website-erstellen" rel="dofollow">WordPress-Websites</a>,
+  <a href="https://websitewissen.com/wordpress-hosting-vergleich" rel="dofollow">WordPress-Hosting</a> und
+  <a href="https://websitewissen.com/website-kosten" rel="dofollow">Website-Kosten</a> nach einem Muster von
+  <a href="https://www.kanzlei-hasselbach.de/" rel="dofollow">Kanzlei Hasselbach Rechtsanwälte</a> 
+</section>
+
+    `;
+}
+
+
+function loadDialogImpressum() {
+    dialogImpressumRef.showModal();
+    dialogImpressumRef.classList.add("showPictureFlex");
+
+    let container = document.getElementById("Impressum");
+    container.innerHTML = createImpressumHTML();
+
+}
+
+function closeDialogImpressum() {
+    dialogImpressumRef.close();
+    dialogImpressumRef.classList.remove("showPictureFlex");
+    overlay.classList.add("d_none");
+}
 
 // Initialisierung
 loadMenus();  //header, Menü und Footer laden

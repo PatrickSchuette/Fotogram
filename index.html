@@ -26,12 +26,14 @@
 
   </main>
 
+<!--  ###################  Dialog  Bilder -->
+  <dialog id="dialogPicture" class="dialogClass">
 
-  <dialog id="showPicture">
     <header>
-      <h1>Wintertraum</h1>
-      <button onclick="closeDialog()">Schließen</button>
+      <h2>Wintertraum</h2>
+      <button onclick="closeDialogImg()">Schließen</button>
     </header>
+
     <main>
       <div id="FotogramImg"></div>
     </main>
@@ -43,9 +45,34 @@
       
     </footer>
 
-
-
   </dialog>
+
+ <!--  ###################  Dialog  Kontakt-->
+  <dialog id="dialogContact" class="dialogClass">
+
+    <header>
+      <h2>Contact</h2>
+      <button onclick="closeDialogContact()">Schließen</button>
+    </header>
+
+    <main>
+      <div id="Contact"></div>
+    </main>
+  </dialog>
+
+   <!--  ###################  Dialog  Impressum-->
+  <dialog id="dialogImpressum" class="dialogClass">
+
+    <header>
+      <h2>Impressum</h2>
+      <button onclick="closeDialogImpressum()">Schließen</button>
+    </header>
+
+    <main>
+      <div id="Impressum"></div>
+    </main>
+  </dialog>
+
 
   <footer id="footer-container"></footer> <!-- Eingebunden über main.js -->
 

@@ -46,7 +46,41 @@ footer {
   padding: 0 var(--AbstandRand);
 }
 
-/* Header */
+h3{
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+h4{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#ContactForm{
+width: 250px;
+
+}
+
+/* ############### Kontaktformular */
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 10px 12px 10px 12px;
+    margin: 0px;
+}
+
+form input {
+    height: 35px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 5px;
+}
+
+/* ############### Header / Footer */
 header {
   background-color: #3a3a3a73;
   height: var(--HeightHeader);
@@ -77,7 +111,6 @@ header {
 /* ############ Vorschau */
 .imgPreview {
   width: 256px;
-  /* Einheitliche Breite */
   aspect-ratio: 1 / 1;
   padding: 0;
   border: none;
@@ -92,7 +125,6 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Bild wird zugeschnitten, ohne Verzerrung */
   display: block;
 }
 
@@ -104,7 +136,7 @@ header {
 
 
 
-/* Verstecken des Buttons auf Desktop */
+/* Verstecken Mobile Device / Desktop */
 .hide-desktop {
   display: none;
 }
@@ -112,6 +144,8 @@ header {
 .hide-mobile {
   display: block;
 }
+
+/* ############### Foto für Dialog */
 
 #FotogramPreview {
   display: flex;
@@ -128,7 +162,8 @@ header {
   object-fit: contain;
 }
 
-#showPicture {
+/*  ############### Dialog  */
+.dialogClass {
   position: fixed;
   top: var(--AbstandDialogbox);
   bottom: var(--AbstandDialogbox);
@@ -145,7 +180,7 @@ header {
 
 }
 
-#showPicture button {
+.dialogClass button {
   background-color: #2d5588;
   color: white;
   border: none;
@@ -156,7 +191,7 @@ header {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#showPicture header {
+.dialogClass header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,14 +200,14 @@ header {
   color: white;
 }
 
-#showPicture header h1 {
+.dialogClass header h2 {
   flex: 1;
   text-align: center;
   margin: 0;
   font-size: 32px;
 }
 
-#showPicture header button {
+.dialogClass header button {
   background-color: #2d5588;
   color: white;
   border: none;
@@ -184,10 +219,15 @@ header {
 }
 
 .showPictureFlex{
-
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
+  flex: 1;
+}
+
+.showPictureFlex main{
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
