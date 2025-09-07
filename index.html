@@ -17,7 +17,7 @@
   <div id="overlay" class="overlay d_none"></div>
 
   <main>
-    
+
     <section class="container">
       <h1> Ski Wintertraum</h1>
 
@@ -26,33 +26,29 @@
 
   </main>
 
-<!--  ###################  Dialog  Bilder -->
+  <!--  ###################  Dialog  Bilder -->
   <dialog id="dialogPicture" class="dialogClass">
 
     <header>
       <h2>Wintertraum</h2>
-      <button onclick="closeDialogImg()">Schließen</button>
+      <button onclick="closeDialogImg()">X</button>
     </header>
 
     <main>
       <div id="FotogramImg"></div>
-    </main>
-
-    <footer>
-      <button id="dialogPrevious" onclick="previousPicture()">previous</button>
       <div id="imgID"></div>
-      <button id="dialogNext" onclick="nextPicture()">next</button>
-      
-    </footer>
+      <button id="dialogPrevious" onclick="previousPicture()">&lt;</button>
+      <button id="dialogNext" onclick="nextPicture()">&gt;</button>
+    </main>
 
   </dialog>
 
- <!--  ###################  Dialog  Kontakt-->
+  <!--  ###################  Dialog  Kontakt-->
   <dialog id="dialogContact" class="dialogClass">
 
     <header>
       <h2>Contact</h2>
-      <button onclick="closeDialogContact()">Schließen</button>
+      <button onclick="closeDialogContact()">X</button>
     </header>
 
     <main>
@@ -60,12 +56,12 @@
     </main>
   </dialog>
 
-   <!--  ###################  Dialog  Impressum-->
+  <!--  ###################  Dialog  Impressum-->
   <dialog id="dialogImpressum" class="dialogClass">
 
     <header>
       <h2>Impressum</h2>
-      <button onclick="closeDialogImpressum()">Schließen</button>
+      <button onclick="closeDialogImpressum()">X</button>
     </header>
 
     <main>

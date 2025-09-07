@@ -162,6 +162,53 @@ header {
   object-fit: contain;
 }
 
+#imgID {
+  color: red; /* Textfarbe */
+  font-size: 21px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ordentlicher Schatten */
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%); /* zentriert horizontal */
+}
+
+#dialogPrevious {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* vertikal mittig */
+}
+
+#dialogNext {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* vertikal mittig */
+
+}
+
+#dialogPrevious button {
+  background-color: #ffffff;         /* Heller Hintergrund */
+  border: 2px solid #888;            /* Dezente Umrandung */
+  border-radius: 50%;                /* Runde Form für elegantes Aussehen */
+  color: #333;                       /* Dunkle Schriftfarbe */
+  font-size: 24px;                   /* Gut sichtbare Pfeile */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;                   /* Zeigt Hand-Cursor beim Hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sanfter Schatten */
+  transition: all 0.3s ease;         /* Sanfte Animation beim Hover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dialogPrevious button:hover {
+  background-color: #f0f0f0;         /* Leichtes Grau beim Hover */
+  transform: scale(1.1);             /* Kleiner Zoom-Effekt */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+}
+  
 /*  ############### Dialog  */
 .dialogClass {
   position: fixed;
