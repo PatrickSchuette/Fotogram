@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: var(--AbstandContainer) var(--AbstandRand) ;
+  padding: var(--AbstandContainer) var(--AbstandRand);
 }
 
 html,
@@ -41,43 +41,54 @@ footer {
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  background-color:#3a3a3a73;
+  background-color: #3a3a3a73;
   height: var(--HeightFooter);
   padding: 0 var(--AbstandRand);
 }
 
-h3{
+h3 {
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-h4{
+h4 {
   padding-top: 12px;
   padding-bottom: 12px;
 }
 
-#ContactForm{
-width: 250px;
+#ContactForm {
+  width: 250px;
 
 }
 
 /* ############### Kontaktformular */
 
 form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    padding: 10px 12px 10px 12px;
-    margin: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 10px 12px 10px 12px;
+  margin: 0px;
 }
 
 form input {
-    height: 35px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: none;
-    text-indent: 5px;
+  height: 35px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  text-indent: 5px;
+}
+
+form button {
+  background-color: #2d5588;
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* ############### Header / Footer */
@@ -85,7 +96,7 @@ header {
   background-color: #3a3a3a73;
   height: var(--HeightHeader);
 
-    display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 var(--AbstandRand);
@@ -156,59 +167,60 @@ header {
   padding: 32px 32px;
 }
 
-#FotogramImg img {
+#mainFotogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+#mainFotogram img {
   max-width: 100%;
   max-height: 80vh;
   object-fit: contain;
 }
 
 #imgID {
-  color: red; /* Textfarbe */
-  font-size: 21px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ordentlicher Schatten */
+  color: red;
+  font-size: 32px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* ordentlicher Schatten */
   position: absolute;
-  bottom: 10px;
+  bottom: 32px;
   left: 50%;
-  transform: translateX(-50%); /* zentriert horizontal */
 }
 
 #dialogPrevious {
   position: absolute;
   left: 10px;
   top: 50%;
-  transform: translateY(-50%); /* vertikal mittig */
+  transform: translateY(-50%);
+  /* vertikal mittig */
 }
 
 #dialogNext {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%); /* vertikal mittig */
+  transform: translateY(-50%);
+  /* vertikal mittig */
 
 }
 
-#dialogPrevious button {
-  background-color: #ffffff;         /* Heller Hintergrund */
-  border: 2px solid #888;            /* Dezente Umrandung */
-  border-radius: 50%;                /* Runde Form für elegantes Aussehen */
-  color: #333;                       /* Dunkle Schriftfarbe */
-  font-size: 24px;                   /* Gut sichtbare Pfeile */
-  width: 50px;
-  height: 50px;
-  cursor: pointer;                   /* Zeigt Hand-Cursor beim Hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sanfter Schatten */
-  transition: all 0.3s ease;         /* Sanfte Animation beim Hover */
+.btnImgChange {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: #333;
+  font-size: 24px;
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#dialogPrevious button:hover {
-  background-color: #f0f0f0;         /* Leichtes Grau beim Hover */
-  transform: scale(1.1);             /* Kleiner Zoom-Effekt */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
-}
-  
 /*  ############### Dialog  */
 .dialogClass {
   position: fixed;
@@ -218,25 +230,16 @@ header {
   right: var(--AbstandDialogbox);
   width: auto;
   height: auto;
-  max-width: 1450px;
+  /* max-width: 1450px; */
   border: none;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background: rgb(76, 74, 153);
+  background-color: rgba(22, 48, 87, 0.8);
   overflow: hidden;
 
 }
 
-.dialogClass button {
-  background-color: #2d5588;
-  color: white;
-  border: none;
-  padding: 0.6em 1.2em;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+
 
 .dialogClass header {
   display: flex;
@@ -254,31 +257,29 @@ header {
   font-size: 32px;
 }
 
-.dialogClass header button {
+.btnDialogClose {
   background-color: #2d5588;
   color: white;
   border: none;
-  padding: 0.4em 0.8em;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 32px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.showPictureFlex{
-  display: flex; 
-  flex-direction: column; 
+.showPictureFlex {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   flex: 1;
 }
 
-.showPictureFlex main{
+.showPictureFlex main {
   justify-content: center;
   align-items: center;
   flex: 1;
 }
 
-.overlay{
+.overlay {
   position: relative;
   top: 0;
   left: 0;
@@ -287,7 +288,7 @@ header {
   background-color: rgba(0, 0, 0, 0.034);
 }
 
-.d_none{
+.d_none {
   display: none;
 }
 
@@ -340,6 +341,7 @@ nav {
     --AbstandContainer: 8px;
     --HeightHeader: 64px;
     --HeightFooter: 64px;
+    --AbstandDialogbox: 24px;
   }
 
 
@@ -369,9 +371,10 @@ nav {
     gap: 12px;
   }
 
- .resp_menu_box a {
+  .resp_menu_box a {
     font-size: 18px;
   }
+
   .resp_menu_closed {
     transform: translateX(100%);
 

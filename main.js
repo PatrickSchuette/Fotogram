@@ -82,6 +82,22 @@ function loadPicture() {
 }
 
 
+function handleKeyDown(event) {
+    switch (event.key) {
+        case "Escape":
+            closeDialogImg();
+            closeDialogContact();
+            closeDialogImpressum();
+            break;
+        case "ArrowLeft":
+            previousPicture();
+            break;
+        case "ArrowRight":
+            nextPicture();
+            break;
+    }
+}
+
 // Funktion zum Überprüfen bei der Wahl des nächsten Bildes ob es das letzte ist
 function nextPicture() {
     if (selectedImg < arrPicture.length -1) {
@@ -90,6 +106,8 @@ function nextPicture() {
         selectedImg = 0;
     }
     loadPicture();
+
+    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
 }
 
 function previousPicture() {
@@ -149,6 +167,9 @@ function loadDialogContact() {
     let container = document.getElementById("Contact");
     container.innerHTML = createContactHTML();
 
+    overlay.classList.remove("d_none");
+
+    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
 }
 
 function closeDialogContact() {
@@ -281,6 +302,10 @@ function loadDialogImpressum() {
 
     let container = document.getElementById("Impressum");
     container.innerHTML = createImpressumHTML();
+
+    overlay.classList.remove("d_none");
+
+    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
 
 }
 

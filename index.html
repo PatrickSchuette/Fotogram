@@ -31,14 +31,14 @@
 
     <header>
       <h2>Wintertraum</h2>
-      <button onclick="closeDialogImg()">X</button>
+      <button class="btnDialogClose" onclick="closeDialogImg()">X</button>
     </header>
 
-    <main>
-      <div id="FotogramImg"></div>
-      <div id="imgID"></div>
-      <button id="dialogPrevious" onclick="previousPicture()">&lt;</button>
-      <button id="dialogNext" onclick="nextPicture()">&gt;</button>
+    <main id="mainFotogram">
+      <div id="FotogramImg"></div>  <!-- dieser div wird in js durch das Foto ersetzt -->
+      <div id="imgID"></div>    <!-- dieser div wird in js durch die anzahl der und Nummer der Bilder ersetzt -->
+      <button id="dialogPrevious" class="btnImgChange" onclick="previousPicture()">&lt;</button>
+      <button id="dialogNext" class="btnImgChange" onclick="nextPicture()">&gt;</button>
     </main>
 
   </dialog>
@@ -48,7 +48,7 @@
 
     <header>
       <h2>Contact</h2>
-      <button onclick="closeDialogContact()">X</button>
+      <button class="btnDialogClose"  onclick="closeDialogContact()">X</button>
     </header>
 
     <main>
@@ -61,7 +61,7 @@
 
     <header>
       <h2>Impressum</h2>
-      <button onclick="closeDialogImpressum()">X</button>
+      <button class="btnDialogClose"  onclick="closeDialogImpressum()">X</button>
     </header>
 
     <main>
