@@ -14,7 +14,7 @@
 
   <header id="header-container"></header> <!-- Eingebunden über main.js -->
 
-  <div id="overlay" class="overlay d_none"></div>
+  <div id="overlay" class="overlay d_none" onclick="closeDialog()"></div>
 
   <main>
 
@@ -31,7 +31,7 @@
 
     <header>
       <h2>Wintertraum</h2>
-      <button class="btnDialogClose" onclick="closeDialogImg()">X</button>
+      <button class="btnDialogClose" onclick="closeDialog()">X</button>
     </header>
 
     <main id="mainFotogram">
@@ -43,16 +43,16 @@
 
   </dialog>
 
-  <!--  ###################  Dialog  Kontakt-->
-  <dialog id="dialogContact" class="dialogClass">
+  <!--  ###################  Dialog  Datenschutz-->
+  <dialog id="dialogDatenschutz" class="dialogClass">
 
     <header>
-      <h2>Contact</h2>
-      <button class="btnDialogClose"  onclick="closeDialogContact()">X</button>
+      <h2>Datenschutzerklärung</h2>
+      <button class="btnDialogClose"  onclick="closeDialog()">X</button>
     </header>
 
     <main>
-      <div id="Contact"></div>
+      <div id="Datenschutz"></div>
     </main>
   </dialog>
 
@@ -61,7 +61,7 @@
 
     <header>
       <h2>Impressum</h2>
-      <button class="btnDialogClose"  onclick="closeDialogImpressum()">X</button>
+      <button class="btnDialogClose"  onclick="closeDialog()">X</button>
     </header>
 
     <main>

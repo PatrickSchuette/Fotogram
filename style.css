@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  overflow: hidden;
 }
 
 :root {
@@ -61,35 +62,6 @@ h4 {
 
 }
 
-/* ############### Kontaktformular */
-
-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  padding: 10px 12px 10px 12px;
-  margin: 0px;
-}
-
-form input {
-  height: 35px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: none;
-  text-indent: 5px;
-}
-
-form button {
-  background-color: #2d5588;
-  color: white;
-  border: none;
-  padding: 0.6em 1.2em;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
 /* ############### Header / Footer */
 header {
@@ -262,8 +234,9 @@ header {
   color: white;
   border: none;
   border-radius: 6px;
-  font-size: 32px;
+  font-size: 16px;
   cursor: pointer;
+  padding: 1%;
 }
 
 .showPictureFlex {
@@ -334,6 +307,18 @@ nav {
   cursor: pointer;
 }
 
+#Impressum {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+#Impressum a {
+  color: red;
+}
+
 /* ##################### Mobile Ansicht */
 @media (max-width: 767px) {
   :root {
@@ -378,6 +363,10 @@ nav {
   .resp_menu_closed {
     transform: translateX(100%);
 
+  }
+
+  .imgPreview {
+    width: 128px;
   }
 
 }

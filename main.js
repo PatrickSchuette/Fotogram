@@ -1,22 +1,22 @@
 let arrPicture = [
 
-  ["blackcomb-52957_1280.jpg", "Blackcomb Mountain im Winter"],
-  ["heliskiing-heli-skiing-1974015_1280.jpg", "Heliskiing Abenteuer"],
-  ["mountain-6908988_1280.jpg", "Majestätischer Berg bei Sonnenuntergang"],
-  ["nature-1283694_1280.jpg", "Unberührte Natur im Schnee"],
-  ["ski-2098120_1280.jpg", "Skifahrer auf der Piste"],
-  ["skiing-4835024_1280.jpg", "Dynamische Abfahrt im Tiefschnee"],
-  ["skiing-5878729_1280.jpg", "Skifahrer in Aktion"],
-  ["skiing-6060431_1280.jpg", "Sprung über Schneehügel"],
-  ["snow-6881356_1280.jpg", "Verschneite Landschaft mit Bäumen"]
+    ["blackcomb-52957_1280.jpg", "Blackcomb Mountain im Winter"],
+    ["heliskiing-heli-skiing-1974015_1280.jpg", "Heliskiing Abenteuer"],
+    ["mountain-6908988_1280.jpg", "Majestätischer Berg bei Sonnenuntergang"],
+    ["nature-1283694_1280.jpg", "Unberührte Natur im Schnee"],
+    ["ski-2098120_1280.jpg", "Skifahrer auf der Piste"],
+    ["skiing-4835024_1280.jpg", "Dynamische Abfahrt im Tiefschnee"],
+    ["skiing-5878729_1280.jpg", "Skifahrer in Aktion"],
+    ["skiing-6060431_1280.jpg", "Sprung über Schneehügel"],
+    ["snow-6881356_1280.jpg", "Verschneite Landschaft mit Bäumen"]
 ];
 
 let selectedImg;
 
-const dialogPictureRef = document.getElementById("dialogPicture");
-const overlaygRef = document.getElementById("overlay");
-const dialogContactRef = document.getElementById("dialogContact");
-const dialogImpressumRef = document.getElementById("dialogImpressum");
+const DIALOG_PICTURE = document.getElementById("dialogPicture");
+const OVERLAY_REF = document.getElementById("overlay");
+const DIALOG_DATENSCHUTZ = document.getElementById("dialogDatenschutz");
+const DIALOG_IMPRESSUM = document.getElementById("dialogImpressum");
 
 
 // ################## Header und Footer für die Hauptseite laden
@@ -28,7 +28,7 @@ function createResponsiveMenuHTML() {
         <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
         <nav id="resp_menu" class="main-nav resp_menu_box resp_menu_closed" aria-hidden="true">
             <ul>
-                <li><a onclick="loadDialogContact()">Kontakt</a></li>
+                <li><a onclick="loadDialogDatenschutz()">Datenschutz</a></li>
                 <li><a onclick="loadDialogImpressum()">Impressum</a></li>
             </ul>
         </nav>
@@ -58,13 +58,13 @@ function getPreview() {
     let container = document.getElementById("FotogramPreview");
     let html = "";
 
-for (let i = 0; i < arrPicture.length; i++) {
-    html += `
+    for (let i = 0; i < arrPicture.length; i++) {
+        html += `
         <button onclick="loadDialogImg('${i}')" class="imgPreview" aria-label="${arrPicture[i][1]}">
             <img src="./ski/${arrPicture[i][0]}" alt="">
         </button>
     `;
-}
+    }
 
     container.innerHTML = html;
 }
@@ -85,9 +85,7 @@ function loadPicture() {
 function handleKeyDown(event) {
     switch (event.key) {
         case "Escape":
-            closeDialogImg();
-            closeDialogContact();
-            closeDialogImpressum();
+            closeDialog();
             break;
         case "ArrowLeft":
             previousPicture();
@@ -100,19 +98,19 @@ function handleKeyDown(event) {
 
 // Funktion zum Überprüfen bei der Wahl des nächsten Bildes ob es das letzte ist
 function nextPicture() {
-    if (selectedImg < arrPicture.length -1) {
+    if (selectedImg < arrPicture.length - 1) {
         selectedImg++;
     } else {
         selectedImg = 0;
     }
     loadPicture();
 
-    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
+
 }
 
 function previousPicture() {
     if (selectedImg == 0) {
-        selectedImg = arrPicture.length -1;
+        selectedImg = arrPicture.length - 1;
     } else {
         selectedImg--;
     }
@@ -122,68 +120,35 @@ function previousPicture() {
 
 
 function loadDialogImg(i) {
-    dialogPictureRef.showModal();
-    dialogPictureRef.classList.add("showPictureFlex");
-    overlay.classList.remove("d_none");
+    DIALOG_PICTURE.showModal();
+    DIALOG_PICTURE.classList.add("showPictureFlex");
+    OVERLAY_REF.classList.remove("d_none");
+    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
+
     selectedImg = parseInt(i);
     loadPicture();
 
 }
 
-function closeDialogImg() {
-    dialogPictureRef.close();
-    dialogPictureRef.classList.remove("showPictureFlex");
-    overlay.classList.add("d_none");
+function closeDialog() {
+    const DIALOGS = document.querySelectorAll("dialog");
+    DIALOGS.forEach(dialog => {
+        if (dialog.open) {
+            dialog.close();
+            dialog.classList.remove("showPictureFlex");
+        }
+    });
+
+    OVERLAY_REF.classList.add("d_none");
 }
 
 
-//#################  Contact
 
-function createContactHTML() {
+//#################  Datenschutz
+
+function createDatenschutzHTML() {
     return `
-        <div class="contactFormContainer">
-            <h2>nimm mit uns über das folgende Formular Kontakt auf</h2>
-            <form id="ContactForm" onsubmit="sendMail(event)">
-                <label for="formName" >Dein Name:</label>
-                <input type="text" id="formName" name="name"minlength="2" maxlength="70" placeholder="Max Mustermann" required>
-                <label for="formMail">Deine E-Mail:</label>
-                <input type="email" id="formMail" name="email" minlength="7" maxlength="70" placeholder="max.mustermann@beispiel.com"
-                    required>
-                <label for="formArea">Deine Nachricht:</label>
-                <textarea id="formArea" name="message" maxlength="500" placeholder="Hey Leute..." required></textarea>
-                <div>
-                    <button id="submitBtn" type="submit">Abschicken</button>
-                </div>
-
-            </form>
-        </div>
-    `;
-}
-
-function loadDialogContact() {
-    dialogContactRef.showModal();
-    dialogContactRef.classList.add("showPictureFlex");
-
-    let container = document.getElementById("Contact");
-    container.innerHTML = createContactHTML();
-
-    overlay.classList.remove("d_none");
-
-    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
-}
-
-function closeDialogContact() {
-    dialogContactRef.close();
-    dialogContactRef.classList.remove("showPictureFlex");
-    overlay.classList.add("d_none");
-}
-
-
-//#################  Impressum
-
-function createImpressumHTML() {
-    return `
-        <section id="ImpHaftungsausschuss">
+       <section id="ImpHaftungsausschuss">
   <h3>Haftungsausschluss: </h3>
   <h4>Haftung für Inhalte</h4>
   Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
@@ -296,9 +261,41 @@ function createImpressumHTML() {
 }
 
 
+function loadDialogDatenschutz() {
+    DIALOG_DATENSCHUTZ.showModal();
+    DIALOG_DATENSCHUTZ.classList.add("showPictureFlex");
+
+    let container = document.getElementById("Datenschutz");
+    container.innerHTML = createDatenschutzHTML();
+
+    overlay.classList.remove("d_none");
+
+    document.addEventListener("keydown", handleKeyDown); // Tastatursteuerung aktivieren
+}
+
+
+//#################  Impressum
+
+function createImpressumHTML() {
+    return `
+    <div>
+        <p>Patrick Sch&uuml;tte<br />
+        S&uuml;dstra&szlig;e 7<br />
+        52134 Herzogenrath</p>
+
+        <br>
+        <h3>Kontakt</h3>
+        <p>Telefon: 01631234567<br />
+        E-Mail: patrick.sch@web.de</p>
+
+        <p>Quelle: <a href="https://www.e-recht24.de">eRecht24</a></p>
+    </div>
+        `;
+}
+
 function loadDialogImpressum() {
-    dialogImpressumRef.showModal();
-    dialogImpressumRef.classList.add("showPictureFlex");
+    DIALOG_IMPRESSUM.showModal();
+    DIALOG_IMPRESSUM.classList.add("showPictureFlex");
 
     let container = document.getElementById("Impressum");
     container.innerHTML = createImpressumHTML();
@@ -309,11 +306,6 @@ function loadDialogImpressum() {
 
 }
 
-function closeDialogImpressum() {
-    dialogImpressumRef.close();
-    dialogImpressumRef.classList.remove("showPictureFlex");
-    overlay.classList.add("d_none");
-}
 
 // Initialisierung
 loadMenus();  //header, Menü und Footer laden
