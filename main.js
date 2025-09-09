@@ -146,7 +146,21 @@ function closeDialog() {
     OVERLAY_REF.classList.add("d_none");
 }
 
+  DIALOG_PICTURE.addEventListener('click', (event) => {
+    
+    const content = DIALOG_PICTURE.querySelector('main');
 
+    const rect = content.getBoundingClientRect();
+    const isInDialog = (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    );
+    if (!isInDialog) {
+      closeDialog();
+    }
+});
 
 //#################  Datenschutz
 function createDatenschutzHTML() {
@@ -281,6 +295,22 @@ function loadDatenschutzHTML(){
     container.innerHTML = createDatenschutzHTML();
 
 }
+
+  DIALOG_DATENSCHUTZ.addEventListener('click', (event) => {
+    
+    const content = DIALOG_DATENSCHUTZ.querySelector('main');
+
+    const rect = content.getBoundingClientRect();
+    const isInDialog = (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    );
+    if (!isInDialog) {
+      closeDialog();
+    }
+});
 
 //#################  Impressum
 function createImpressumHTML() {
