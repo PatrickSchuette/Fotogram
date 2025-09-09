@@ -30,8 +30,8 @@ function createResponsiveMenuHTML() {
         <button class="menu-btn hide-desktop" onclick="toggleRespMenu()" aria-label="Menü öffnen">☰</button>
         <nav id="resp_menu" class="main-nav resp_menu_box resp_menu_closed" aria-hidden="true">
             <ul>
-                <li><a href="/index.html" class="nav-link index-link" >Startseite</a></li>
-                <li><a href="/datenschutz.html" target="_blank" class="nav-link datenschutz-link" onclick="loadDialogDatenschutz(); return false;">Datenschutz</a></li>
+                <li><a href="./index.html" class="nav-link index-link" >Startseite</a></li>
+                <li><a href="./datenschutz.html" target="_blank" class="nav-link datenschutz-link" onclick="loadDialogDatenschutz(); return false;">Datenschutz</a></li>
                 <li><a onclick="loadDialogImpressum()">Impressum</a></li>
             </ul>
         </nav>
@@ -316,7 +316,7 @@ function loadDialogImpressum() {
 
 // Initialisierung
 loadMenus();  //header, Menü und Footer laden
-if(currentPath == '/index.html') {getPreview();}  //die vorschau zeigen
+if(currentPath.includes('index.html')) {getPreview();}  //die vorschau zeigen
 
 
 
